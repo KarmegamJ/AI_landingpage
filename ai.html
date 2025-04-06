@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI.landingpage</title>
+    <link rel="shortcut icon" href="photos/Logo2.png" type="image/x-icon" />
+    <link href=".output.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" href="scroll.js" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js"
+      defer
+    ></script>
+
+    <style>
+      .example ::-webkit-scrollbar {
+        display: none;
+      }
+      body {
+        background-color: #06061b;
+      }
+      @font-face {
+        font-family: "Baunk";
+        src: url("photos/font/BaunkRegular.woff2") format("woff2"),
+          url("photos/font/BaunkRegular.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+      .baunk {
+        font-family: "Baunk", sans-serif;
+      }
+      .poppins {
+        font-family: "Poppins", serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+      /* Keyframe animation */
+      @keyframes moveRotate {
+        0% {
+          transform: translateX(-100%) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        50% {
+          transform: translateX(50vw) rotate(180deg);
+        }
+        100% {
+          transform: translateX(100vw) rotate(360deg);
+          opacity: 0;
+        }
+      }
+      .moving-image {
+        width: 100px; /* Adjust size as needed */
+        height: 100px;
+        position: absolute;
+        top: 50%;
+        border-radius: 10px;
+        animation: moveRotate 5s linear infinite;
+      }
+      .image-1 {
+        animation-delay: 0s;
+      }
+      .image-2 {
+        animation-delay: 1.5s;
+      }
+      .image-3 {
+        animation-delay: 3s;
+      }
+      @keyframes gradientMove {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      .line-trail {
+        stroke-dasharray: 100 1000;
+        stroke-dashoffset: 1100;
+        animation: moveSegment 4s linear infinite;
+      }
+      @keyframes moveSegment {
+        0% {
+          stroke-dashoffset: 550;
+        }
+        100% {
+          stroke-dashoffset: 0;
+        }
+      }
+
+      :root {
+        --color1: 135, 15, 255;
+        --color2: 235, 9, 254;
+        --color3: 235, 9, 254;
+        --color4: 82, 21, 255;
+        --color5: 82, 21, 255;
+        --color-interactive: 140, 100, 255;
+        --circle-size: 80%;
+        --blending: hard-light;
+      }
+
+      @keyframes moveInCircle {
+        0% {
+          transform: rotate(0deg);
+        }
+        50% {
+          transform: rotate(180deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes moveVertical {
+        0% {
+          transform: translateY(-50%);
+        }
+        50% {
+          transform: translateY(50%);
+        }
+        100% {
+          transform: translateY(-50%);
+        }
+      }
+
+      @keyframes moveHorizontal {
+        0% {
+          transform: translateX(-50%) translateY(-10%);
+        }
+        50% {
+          transform: translateX(50%) translateY(10%);
+        }
+        100% {
+          transform: translateX(-50%) translateY(-10%);
+        }
+      }
+
+      .gradient-bg {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+        float: inline-end;
+        background: linear-gradient(40deg, var(--color-bg1), var(--color-bg2));
+        top: 0;
+        left: 0;
+
+        svg {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 0;
+          height: 0;
+        }
+
+        .gradients-container {
+          filter: url(#goo) blur(40px);
+          width: 100%;
+          height: 120%;
+        }
+
+        .g1 {
+          position: absolute;
+          background: radial-gradient(
+              circle at center,
+              rgba(var(--color1), 0.8) 0,
+              rgba(var(--color1), 0) 50%
+            )
+            no-repeat;
+          mix-blend-mode: var(--blending);
+
+          width: var(--circle-size);
+          height: var(--circle-size);
+          top: calc(50% - var(--circle-size) / 2);
+          left: calc(50% - var(--circle-size) / 2);
+
+          transform-origin: center center;
+          animation: moveVertical 30s ease infinite;
+
+          opacity: 1;
+        }
+
+        .g2 {
+          position: absolute;
+          background: radial-gradient(
+              circle at center,
+              rgba(var(--color2), 0.8) 0,
+              rgba(var(--color2), 0) 50%
+            )
+            no-repeat;
+          mix-blend-mode: var(--blending);
+
+          width: var(--circle-size);
+          height: var(--circle-size);
+          top: calc(50% - var(--circle-size) / 2);
+          left: calc(50% - var(--circle-size) / 2);
+
+          transform-origin: calc(50% - 400px);
+          animation: moveInCircle 20s reverse infinite;
+
+          opacity: 1;
+        }
+
+        .g3 {
+          position: absolute;
+          background: radial-gradient(
+              circle at center,
+              rgba(var(--color3), 0.8) 0,
+              rgba(var(--color3), 0) 50%
+            )
+            no-repeat;
+          mix-blend-mode: var(--blending);
+
+          width: var(--circle-size);
+          height: var(--circle-size);
+          top: calc(50% - var(--circle-size) / 2 + 200px);
+          left: calc(50% - var(--circle-size) / 2 - 500px);
+
+          transform-origin: calc(50% + 400px);
+          animation: moveInCircle 40s linear infinite;
+
+          opacity: 1;
+        }
+
+        .g4 {
+          position: absolute;
+          background: radial-gradient(
+              circle at center,
+              rgba(var(--color4), 0.8) 0,
+              rgba(var(--color4), 0) 50%
+            )
+            no-repeat;
+          mix-blend-mode: var(--blending);
+
+          width: var(--circle-size);
+          height: var(--circle-size);
+          top: calc(50% - var(--circle-size) / 2);
+          left: calc(50% - var(--circle-size) / 2);
+
+          transform-origin: calc(50% - 200px);
+          animation: moveHorizontal 20s ease infinite;
+
+          opacity: 0.7;
+        }
+
+        .g5 {
+          position: absolute;
+          background: radial-gradient(
+              circle at center,
+              rgba(var(--color5), 0.8) 0,
+              rgba(var(--color5), 0) 50%
+            )
+            no-repeat;
+          mix-blend-mode: var(--blending);
+
+          width: calc(var(--circle-size) * 2);
+          height: calc(var(--circle-size) * 2);
+          top: calc(50% - var(--circle-size));
+          left: calc(50% - var(--circle-size));
+
+          transform-origin: calc(50% - 800px) calc(50% + 200px);
+          animation: moveInCircle 20s ease infinite;
+
+          opacity: 1;
+        }
+
+        .interactive {
+          position: absolute;
+          background: radial-gradient(
+              circle at center,
+              rgba(var(--color-interactive), 0.8) 0,
+              rgba(var(--color-interactive), 0) 50%
+            )
+            no-repeat;
+          mix-blend-mode: var(--blending);
+
+          width: 100%;
+          height: 100%;
+          top: -50%;
+          left: -50%;
+
+          opacity: 0.7;
+        }
+      }
+      .bordergrad {
+        border-image: linear-gradient(45deg, #ff00ff, #ffcc00) 1;
+      }
+
+      /* horizontal scroll */
+      /* demo */
+
+      * {
+        outline: none;
+        box-sizing: border-box;
+        margin: 0px;
+        padding: 0px;
+        border: 0px;
+      }
+
+      body {
+        background: #04091e;
+        font-family: system-ui;
+        color: #04091e;
+        text-align: center;
+      }
+
+      .intro,
+      footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .intro {
+        background: #6e4ce1;
+        color: #f6f2e8;
+      }
+
+      footer {
+        background: #04091e;
+      }
+
+      h1 {
+        font-size: 4rem;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      a {
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -ms-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        display: block;
+        margin: 20px 0 0 0;
+        transition: all 0.3s ease-in-out;
+        font-size: 1.2rem;
+        color: #f6f2e8;
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: #6e4ce1;
+      }
+
+      /* horizontal scroll */
+
+      /* Include your CSS styles here */
+      * {
+        outline: none;
+        box-sizing: border-box;
+        margin: 0px;
+        padding: 0px;
+        border: 0px;
+      }
+
+      body {
+        background: #04091e;
+        font-family: system-ui;
+        color: #04091e;
+        text-align: center;
+      }
+
+      .intro,
+      footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .intro {
+        background: #6e4ce1;
+        color: #f6f2e8;
+      }
+
+      footer {
+        background: #04091e;
+      }
+
+      h1 {
+        font-size: 4rem;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      a {
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -ms-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        display: block;
+        margin: 20px 0 0 0;
+        transition: all 0.3s ease-in-out;
+        font-size: 1.2rem;
+        color: #f6f2e8;
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: #6e4ce1;
+      }
+
+      /* horizontal scroll */
+      #horizontal-scroll {
+        padding: 200px 0;
+      }
+
+      .horizontal-scroll-wrapper {
+        overflow: hidden;
+        height: 525px;
+      }
+
+      .horizontal {
+        display: flex;
+        height: 100%;
+      }
+
+      .horizontal > div {
+        display: flex;
+        flex-shrink: 0;
+        padding: 0 5px;
+      }
+
+      .horizontal > div:first-child {
+        padding: 0 5px 0 15px;
+      }
+
+      .horizontal > div:last-child {
+        padding: 0 15px 0 5px;
+      }
+
+      .horizontal .card {
+        align-items: stretch;
+        width: 540px;
+        padding: 50px 40px;
+        background: #6e4ce1;
+        border-radius: 38px;
+        color: #f6f2e8;
+      } /* horizontal scroll */
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="py-3 text-white poppins">
+        <div class="flex items-center justify-between px-4 md:justify-evenly">
+          <p class="items-center flex text-[25px] md:text-[35px] baunk">
+            <img src="photos/logo3.png" alt="" class="h-5 md:h-[30px]" />AI
+          </p>
+          <ul class="md:flex gap-10 hidden text-[#9E9E9E]">
+            <li class="font-extrabold text-white"><a href="">Home</a></li>
+            <li><a href="">Updates</a></li>
+            <li><a href="">Services</a></li>
+            <li><a href="">Features</a></li>
+            <li><a href="">About Us</a></li>
+          </ul>
+          <button
+            style="
+              background-size: 200% 200%;
+              animation: gradientMove 3s infinite linear;
+              clip-path: polygon(15% 0, 100% 0, 85% 100%, 0% 100%);
+            "
+            class="relative px-6 py-2 text-base md:text-base md:px-10 md:py-3 cursor-pointer font-semibold text-white transition-all duration-500 ease-in-out bg-gradient-to-r from-[#8E2DE2] to-[#4C02E1] animate-gradient before:absolute before:inset-0 before:bg-gradient-to-r before:from-[#4C02E1] before:to-[#8E2DE2] before:rounded-md before:-z-10 before:blur-md before:opacity-50"
+          >
+            Get started
+          </button>
+        </div>
+        <div class="relative -mt-8">
+          <svg
+            width="100%"
+            height="100"
+            viewBox="0 0 1920 100"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0 50 L400 50 L450 80 L1470 80 L1520 50 L1920 50"
+              stroke="white"
+              stroke-width="0.5"
+              class="opacity-30"
+            />
+          </svg>
+          <div class="absolute -mt-[100px]">
+            <svg
+              width="100%"
+              height="100"
+              viewBox="0 0 1920 100"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 50 L400 50 L450 80 L1470 80 L1520 50 L1920 50"
+                stroke="white"
+                stroke-width="1"
+                class="opacity-30 line-trail"
+              />
+            </svg>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <section>
+      <div
+        class="md:top-auto md:items-center place-self-center md:justify-center md:flex"
+      >
+        <div class="order-1 -mt-12 md:mt-0 md:order-2">
+          <div class="relative">
+            <img
+              src="photos/heroai.png"
+              alt=""
+              class="w-[400px] md:w-[600px]"
+            /><img
+              src="photos/halfline.png"
+              alt=""
+              class="absolute w-28 md:w-[300px] top-2 right-14 opacity-50"
+            />
+            <img
+              src="photos/Group 1.png"
+              alt=""
+              class="absolute w-2 right-20 bottom-20"
+            />
+          </div>
+        </div>
+        <div
+          class="order-5 pl-10 text-center text-white md:text-left md:order-1"
+        >
+          <img src="photos/Group 1.png" alt="" class="hidden w-2 md:block" />
+          <p
+            class="text-2xl md:leading-[60px] md:text-[60px] baunk w-[320px] md:w-[800px] md:py-5"
+          >
+            AI Powers Next-Level
+          </p>
+          <p
+            class="poppins w-[320px] md:w-[600px] md:text-lg text-xs font-light pb-4 md:pb-8"
+          >
+            Unlock the potential of AI to automate, optimize, streamline,and
+            revolutionize your business operations.
+          </p>
+          <button
+            style="
+              background-size: 200% 200%;
+              animation: gradientMove 3s infinite linear;
+              clip-path: polygon(15% 0, 100% 0, 85% 100%, 0% 100%);
+            "
+            class="flex gap-2 place-self-center md:place-self-start relative px-6 py-2 text-sm md:text-lg md:px-10 md:py-3 poppins drop-shadow-xl font-semibold text-white transition-all duration-500 ease-in-out bg-gradient-to-r from-[#8E2DE2] to-[#4C02E1] animate-gradient before:absolute before:inset-0 before:bg-gradient-to-r before:from-[#4C02E1] before:to-[#8E2DE2] before:rounded-md before:-z-10 before:blur-md before:opacity-50"
+          >
+            <img src="photos/play.svg" alt="" class="w-5 md:w-auto" /> Play Demo
+          </button>
+        </div>
+      </div>
+
+      <div class="absolute gradient-bg -z-10">
+        <svg xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="goo">
+              <feGaussianBlur
+                in="SourceGraphic"
+                stdDeviation="10"
+                result="blur"
+              />
+              <feColorMatrix
+                in="blur"
+                mode="matrix"
+                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8"
+                result="goo"
+              />
+              <feBlend in="SourceGraphic" in2="goo" />
+            </filter>
+          </defs>
+        </svg>
+        <div class="gradients-container">
+          <div class="g1"></div>
+          <div class="g2"></div>
+          <div class="g3"></div>
+          <div class="g4"></div>
+          <div class="g5"></div>
+          <div class="interactive"></div>
+        </div>
+      </div>
+      <div
+        class="cursor-pointer place-items-center animate__animated animate__bounce animate__delay-5s animate__repeat-2"
+      >
+        <img src="photos/arrow.png" alt="" class="w-8 md:w-16" />
+      </div>
+    </section>
+    <section>
+      <div
+        class="font-light relative text-white md:w-[850px] md:leading-[60px] text-center py-24 md:py-32 content-center justify-self-center"
+      >
+        <h3 class="baunk leading-10 text-2xl md:text-[50px]">
+          How AI Can Empower Your Life
+        </h3>
+        <p class="poppins text-xs md:text-base text-[#999999] py-6">
+          AI isn't just technology—it's a tool that can simplify your daily
+          tasks, enhance productivity, and provide insights that lead to smarter
+          decisions. Start your journey with AI today and see how it can
+          transform your world.
+        </p>
+        <button
+          style="
+            background-size: 200% 200%;
+            animation: gradientMove 3s infinite linear;
+            clip-path: polygon(15% 0, 100% 0, 85% 100%, 0% 100%);
+          "
+          class="flex gap-2 place-self-center md:place-self-start relative px-6 py-2 text-sm md:text-lg md:px-10 md:py-3 poppins drop-shadow-xl font-semibold text-white transition-all duration-500 ease-in-out bg-gradient-to-r from-[#8E2DE2] to-[#4C02E1] animate-gradient before:absolute before:inset-0 before:bg-gradient-to-r before:from-[#4C02E1] before:to-[#8E2DE2] before:rounded-md before:-z-10 before:blur-md before:opacity-50"
+        >
+          Start Exploring
+        </button>
+        <div class="absolute left-4 top-9 md:top-14 md:left-[-180px]">
+          <img src="photos/qr.png" alt="" class="md:w-[25px] w-3" />
+        </div>
+        <div class="right-10 absolute bottom-14 md:right-[-180px]">
+          <img src="photos/line.png" alt="" class="md:h-[130px] h-20" />
+        </div>
+      </div>
+    </section>
+    <section>
+      <div
+        class="justify-center gap-10 px-4 md:px-auto md:items-center md:flex"
+      >
+        <div class="relative place-self-center">
+          <img
+            src="photos/datapic.png"
+            alt=""
+            class="w-[400px] md:w-[700px]"
+          /><img
+            src="photos/shape.svg"
+            alt=""
+            class="absolute md:w-auto w-[60px] bottom-20 md:bottom-48 left-8"
+          />
+          <img
+            src="photos/Gradient4.svg"
+            alt=""
+            class="absolute bottom-20 left-3 w-[400px] md:w-[3000px] -z-10"
+          />
+        </div>
+        <div class="text-white md:gap-5 poppins">
+          <div class="py-2 md:py-4">
+            <div class="flex text-[19px] md:text-[25px] gap-2">
+              <img src="photos/arrcolor.svg" alt="" class="w-5 md:w-auto" />
+              <p>Automation</p>
+            </div>
+            <p class="px-8 font-light text-xs md:text-base text-[#9E9E9E]">
+              Streamline repetitive tasks and focus on what truly matters.
+            </p>
+          </div>
+          <div class="py-2 md:py-4">
+            <div class="flex text-[19px] md:text-[25px] gap-2">
+              <img src="photos/arrcolor.svg" alt="" class="w-5 md:w-auto" />
+              <p>Data Analysis</p>
+            </div>
+            <p class="px-8 font-light text-xs md:text-base text-[#9E9E9E]">
+              Uncover hidden patterns and insights within your data.
+            </p>
+          </div>
+          <div class="py-2 md:py-4">
+            <div class="flex text-[19px] md:text-[25px] gap-2">
+              <img src="photos/arrcolor.svg" alt="" class="w-5 md:w-auto" />
+              <p>Personalization</p>
+            </div>
+            <p class="px-8 font-light text-xs md:text-base text-[#9E9E9E]">
+              Deliver tailored experiences to each individual user.
+            </p>
+          </div>
+          <div class="py-2 md:py-4">
+            <div class="flex text-[19px] md:text-[25px] gap-2">
+              <img src="photos/arrcolor.svg" alt="" class="w-5 md:w-auto" />
+              <p>Predictive Analytics</p>
+            </div>
+            <p class="px-8 font-light text-xs md:text-base text-[#9E9E9E]">
+              Anticipate trends and make informed decisions before they happen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="mt-20 example md:mt-7">
+        <div class="relative text-center place-items-center">
+          <p
+            class="baunk text-2xl md:leading-[60px] md:text-[50px] md:w-[800px] text-white"
+          >
+            Master AI with Learning Streams
+          </p>
+          <p
+            class="poppins text-xs mx-5 md:text-base md:w-[600px] py-6 font-light text-[#9E9E9E] pb-8"
+          >
+            Explore a variety of AI training programs designed to suit different
+            needs, whether you're a beginner or looking to deepen your
+            expertise.
+          </p>
+          <img
+            src="photos/cross.svg"
+            alt=""
+            class="absolute scale-50 md:scale-[100%] right-8 md:right-28 md:top-5 top-40"
+          />
+        </div>
+        <div class="overflow-scroll md:my-20 example">
+          <div class="inline-flex md:gap-6 md:m-4">
+            <div
+              class="w-[330px] h-[500px] md:scale-[100%] scale-[75%] bg-[#130E25] border border-opacity-75 rounded-3xl overflow-auto"
+            >
+              <div class="relative">
+                <img src="photos/ai1.png" alt="" class="w-[334px]" />
+                <div class="absolute right-3 top-3">
+                  <img src="photos/playbutton.png" alt="" class="w-[70px]" />
+                </div>
+              </div>
+              <div
+                class="px-3 text-lg bg-[#130E25] font-extrabold text-white poppins"
+              >
+                <p class="pt-4 pb-2 text-lg font-extrabold">
+                  Start Your AI Journey
+                </p>
+                <p class="text-sm font-light pb-6 text-[#999999]">
+                  Automate routine tasks and free up your time for more
+                  important activities.
+                </p>
+              </div>
+            </div>
+            <div
+              class="w-[330px] md:scale-[100%] scale-[75%] h-[500px] bg-[#130E25] border border-opacity-75 rounded-3xl overflow-auto"
+            >
+              <div class="relative">
+                <img src="photos/ai2.png" alt="" class="w-[334px]" />
+                <div class="absolute right-3 top-3">
+                  <img src="photos/playbutton.png" alt="" class="w-[70px]" />
+                </div>
+              </div>
+              <div
+                class="px-3 text-lg bg-[#130E25] font-extrabold text-white poppins"
+              >
+                <p class="pt-4 pb-2 text-lg font-extrabold">
+                  Core Skills for the Future of AI
+                </p>
+                <p class="text-sm font-light pb-6 text-[#999999]">
+                  Get customized recommendations and solutions tailored to your
+                  specific needs.
+                </p>
+              </div>
+            </div>
+            <div
+              class="w-[330px] h-[500px] md:scale-[100%] scale-[75%] bg-[#130E25] border border-opacity-75 rounded-3xl overflow-auto"
+            >
+              <div class="relative">
+                <img src="photos/ai3.png" alt="" class="w-[334px]" />
+                <div class="absolute right-3 top-3">
+                  <img src="photos/playbutton.png" alt="" class="w-[70px]" />
+                </div>
+              </div>
+              <div
+                class="px-3 text-lg bg-[#130E25] font-extrabold text-white poppins"
+              >
+                <p class="pt-4 pb-2 text-lg font-extrabold">
+                  Elevate Your AI Expertise
+                </p>
+                <p class="text-sm font-light pb-6 text-[#999999]">
+                  Leverage AI-driven insights to make data-backed decisions with
+                  confidence.
+                </p>
+              </div>
+            </div>
+            <div
+              class="w-[330px] text h-[500px] md:scale-[100%] scale-[75%] bg-[#130E25] border border-opacity-75 rounded-3xl overflow-auto"
+            >
+              <div class="relative">
+                <img src="photos/ai52.png" alt="" class="w-[334px]" />
+                <div class="absolute right-3 top-3">
+                  <img src="photos/playbutton.png" alt="" class="w-[70px]" />
+                </div>
+              </div>
+              <div
+                class="px-3 text-lg bg-[#130E25] font-extrabold text-white poppins"
+              >
+                <p class="pt-4 pb-2 text-lg font-extrabold">
+                  AI for Business LeadersSubtitle
+                </p>
+                <p class="text-sm font-light pb-6 text-[#999999]">
+                  AI can be leveraged to drive business growth, improve
+                  efficiency, and foster innovation.
+                </p>
+              </div>
+            </div>
+            <div
+              class="w-[330px] h-[500px] md:scale-[100%] scale-[75%] bg-[#130E25] border border-opacity-75 rounded-3xl overflow-auto"
+            >
+              <div class="relative">
+                <img src="photos/ai1.png" alt="" class="w-[334px]" />
+                <div class="absolute right-3 top-3">
+                  <img src="photos/playbutton.png" alt="" class="w-[70px]" />
+                </div>
+              </div>
+              <div
+                class="px-3 text-lg bg-[#130E25] font-extrabold text-white poppins"
+              >
+                <p class="pt-4 pb-2 text-lg font-extrabold">
+                  Start Your AI Journey
+                </p>
+                <p class="text-sm font-light pb-6 text-[#999999]">
+                  Automate routine tasks and free up your time for more
+                  important activities.
+                </p>
+              </div>
+            </div>
+            <div
+              class="w-[330px] h-[500px] md:scale-[100%] scale-[75%] bg-[#130E25] border border-opacity-75 rounded-3xl overflow-auto"
+            >
+              <div class="relative">
+                <img src="photos/ai2.png" alt="" class="w-[334px]" />
+                <div class="absolute right-3 top-3">
+                  <img src="photos/playbutton.png" alt="" class="w-[70px]" />
+                </div>
+              </div>
+              <div
+                class="px-3 text-lg bg-[#130E25] font-extrabold text-white poppins"
+              >
+                <p class="pt-4 pb-2 text-lg font-extrabold">
+                  Core Skills for the Future of AI
+                </p>
+                <p class="text-sm font-light pb-6 text-[#999999]">
+                  Get customized recommendations and solutions tailored to your
+                  specific needs.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="relative py-10">
+        <div class="text-center text-white place-self-center">
+          <h3 class="baunk text-2xl md:text-[50px]">FAQ</h3>
+          <p
+            class="poppins w-auto md:w-[500px] py-6 font-light text-sm md:text-base text-[#9E9E9E]"
+          >
+            Understanding AI, Its Applications, and How It's Shaping the Future
+            of Technology
+          </p>
+        </div>
+        <div>
+          <ul
+            class="flex flex-col w-[330px] place-self-center pt-6 md:w-[600px] text-white"
+          >
+            <li class="my-2" x-data="accordion(1)">
+              <h2
+                @click="handleClick()"
+                class="flex flex-row items-center justify-between p-3 font-semibold cursor-pointer"
+              >
+                <span class="text-base md:text-[24px]"
+                  >What is Artificial Intelligence (AI)?</span
+                >
+                <svg
+                  :class="handleRotate()"
+                  class="w-6 h-6 text-white transition-transform duration-500 transform fill-current"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M13.962,8.885l-3.736,3.739c-0.086,0.086-0.201,0.13-0.314,0.13S9.686,12.71,9.6,12.624l-3.562-3.56C5.863,8.892,5.863,8.611,6.036,8.438c0.175-0.173,0.454-0.173,0.626,0l3.25,3.247l3.426-3.424c0.173-0.172,0.451-0.172,0.624,0C14.137,8.434,14.137,8.712,13.962,8.885 M18.406,10c0,4.644-3.763,8.406-8.406,8.406S1.594,14.644,1.594,10S5.356,1.594,10,1.594S18.406,5.356,18.406,10 M17.521,10c0-4.148-3.373-7.521-7.521-7.521c-4.148,0-7.521,3.374-7.521,7.521c0,4.147,3.374,7.521,7.521,7.521C14.148,17.521,17.521,14.147,17.521,10"
+                  ></path>
+                </svg>
+              </h2>
+              <div
+                x-ref="tab"
+                :style="handleToggle()"
+                class="overflow-hidden transition-all duration-500 border-l-2 border-purple-600 max-h-0"
+              >
+                <p class="p-3 text-sm md:text-base">
+                  AI is integrated into many aspects of daily life, including
+                  virtual assistants like Siri and Alexa, personalized
+                  recommendations on streaming services, autonomous vehicles,
+                  and even in healthcare for diagnosing diseases.
+                </p>
+              </div>
+            </li>
+            <li class="my-2" x-data="accordion(2)">
+              <h2
+                @click="handleClick()"
+                class="flex flex-row items-center justify-between p-3 font-semibold cursor-pointer"
+              >
+                <span class="text-base md:text-[24px]"
+                  >How is AI used in everyday life?</span
+                >
+                <svg
+                  :class="handleRotate()"
+                  class="w-6 h-6 text-white transition-transform duration-500 transform fill-current"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M13.962,8.885l-3.736,3.739c-0.086,0.086-0.201,0.13-0.314,0.13S9.686,12.71,9.6,12.624l-3.562-3.56C5.863,8.892,5.863,8.611,6.036,8.438c0.175-0.173,0.454-0.173,0.626,0l3.25,3.247l3.426-3.424c0.173-0.172,0.451-0.172,0.624,0C14.137,8.434,14.137,8.712,13.962,8.885 M18.406,10c0,4.644-3.763,8.406-8.406,8.406S1.594,14.644,1.594,10S5.356,1.594,10,1.594S18.406,5.356,18.406,10 M17.521,10c0-4.148-3.373-7.521-7.521-7.521c-4.148,0-7.521,3.374-7.521,7.521c0,4.147,3.374,7.521,7.521,7.521C14.148,17.521,17.521,14.147,17.521,10"
+                  ></path>
+                </svg>
+              </h2>
+              <div
+                class="overflow-hidden transition-all duration-500 border-l-2 border-purple-600 max-h-0"
+                x-ref="tab"
+                :style="handleToggle()"
+              >
+                <p class="p-3 text-sm md:text-base">
+                  AI is integrated into many aspects of daily life, including
+                  virtual assistants like Siri and Alexa, personalized
+                  recommendations on streaming services, autonomous vehicles,
+                  and even in healthcare for diagnosing diseases.
+                </p>
+              </div>
+            </li>
+            <li class="my-2" x-data="accordion(3)">
+              <h2
+                @click="handleClick()"
+                class="flex flex-row items-center justify-between p-3 font-semibold cursor-pointer"
+              >
+                <span class="text-base md:text-[24px]"
+                  >What are the different types of AI?</span
+                >
+                <svg
+                  :class="handleRotate()"
+                  class="w-6 h-6 text-white transition-transform duration-500 transform fill-current"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M13.962,8.885l-3.736,3.739c-0.086,0.086-0.201,0.13-0.314,0.13S9.686,12.71,9.6,12.624l-3.562-3.56C5.863,8.892,5.863,8.611,6.036,8.438c0.175-0.173,0.454-0.173,0.626,0l3.25,3.247l3.426-3.424c0.173-0.172,0.451-0.172,0.624,0C14.137,8.434,14.137,8.712,13.962,8.885 M18.406,10c0,4.644-3.763,8.406-8.406,8.406S1.594,14.644,1.594,10S5.356,1.594,10,1.594S18.406,5.356,18.406,10 M17.521,10c0-4.148-3.373-7.521-7.521-7.521c-4.148,0-7.521,3.374-7.521,7.521c0,4.147,3.374,7.521,7.521,7.521C14.148,17.521,17.521,14.147,17.521,10"
+                  ></path>
+                </svg>
+              </h2>
+              <div
+                class="overflow-hidden transition-all duration-500 border-l-2 border-purple-600 max-h-0"
+                x-ref="tab"
+                :style="handleToggle()"
+              >
+                <p class="p-3 text-sm md:text-base">
+                  AI is integrated into many aspects of daily life, including
+                  virtual assistants like Siri and Alexa, personalized
+                  recommendations on streaming services, autonomous vehicles,
+                  and even in healthcare for diagnosing diseases.
+                </p>
+              </div>
+            </li>
+            <li class="my-2" x-data="accordion(4)">
+              <h2
+                @click="handleClick()"
+                class="flex flex-row items-center justify-between p-3 font-semibold cursor-pointer"
+              >
+                <span class="text-base md:text-[24px]">Is AI safe?</span>
+                <svg
+                  :class="handleRotate()"
+                  class="w-6 h-6 text-white transition-transform duration-500 transform fill-current"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M13.962,8.885l-3.736,3.739c-0.086,0.086-0.201,0.13-0.314,0.13S9.686,12.71,9.6,12.624l-3.562-3.56C5.863,8.892,5.863,8.611,6.036,8.438c0.175-0.173,0.454-0.173,0.626,0l3.25,3.247l3.426-3.424c0.173-0.172,0.451-0.172,0.624,0C14.137,8.434,14.137,8.712,13.962,8.885 M18.406,10c0,4.644-3.763,8.406-8.406,8.406S1.594,14.644,1.594,10S5.356,1.594,10,1.594S18.406,5.356,18.406,10 M17.521,10c0-4.148-3.373-7.521-7.521-7.521c-4.148,0-7.521,3.374-7.521,7.521c0,4.147,3.374,7.521,7.521,7.521C14.148,17.521,17.521,14.147,17.521,10"
+                  ></path>
+                </svg>
+              </h2>
+              <div
+                class="overflow-hidden transition-all duration-500 border-l-2 border-purple-600 max-h-0"
+                x-ref="tab"
+                :style="handleToggle()"
+              >
+                <p class="p-3 text-sm md:text-base">
+                  AI is integrated into many aspects of daily life, including
+                  virtual assistants like Siri and Alexa, personalized
+                  recommendations on streaming services, autonomous vehicles,
+                  and even in healthcare for diagnosing diseases.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="">
+          <img
+            src="photos/dotted.png"
+            alt=""
+            class="md:w-[60px] w-[30px] md:top-16 top-3 left-5 md:left-36 absolute"
+          /><img
+            src="photos/triangle.png"
+            alt=""
+            class="absolute md:w-[18px] w-[12px] left-2 bottom-1 md:bottom-11 md:left-28"
+          />
+          <img
+            src="photos/line2.png"
+            alt=""
+            class="absolute h-[80px] md:h-[180px] right-2 bottom-2 md:right-48 md:bottom-80"
+          />
+          <img
+            src="photos/Gradientb.png"
+            alt=""
+            class="absolute -z-10 -bottom-28"
+          />
+        </div>
+      </div>
+    </section>
+    <section>
+      <div
+        class="flex items-center justify-center bg-[#8E2DE2] bg-opacity-10 p-5 mx-3 md:mx-20 rounded-[40px] my-6"
+      >
+        <div class="order-2 text-white md:order-1">
+          <p
+            class="baunk text-2xl md:leading-[60px] md:text-[50px] w-[350px] md:w-[600px]"
+          >
+            Shaping Our Future
+          </p>
+          <p
+            class="poppins text-[#999999] font-light text-sm md:text-base w-auto md:w-[480px] py-10"
+          >
+            Artificial Intelligence (AI) is revolutionizing industries and
+            transforming daily life. From smart assistants to advanced machine
+            learning, AI is empowering businesses and individuals alike.
+          </p>
+          <button
+            style="
+              background-size: 200% 200%;
+              animation: gradientMove 3s infinite linear;
+              clip-path: polygon(15% 0, 100% 0, 85% 100%, 0% 100%);
+            "
+            class="flex gap-2 place-self-center md:place-self-start relative px-6 py-2 text-sm md:text-lg md:px-10 md:py-3 poppins drop-shadow-xl font-semibold text-white transition-all duration-500 ease-in-out bg-gradient-to-r from-[#8E2DE2] to-[#4C02E1] animate-gradient before:absolute before:inset-0 before:bg-gradient-to-r before:from-[#4C02E1] before:to-[#8E2DE2] before:rounded-md before:-z-10 before:blur-md before:opacity-50"
+          >
+            Start Exploring
+          </button>
+        </div>
+        <div class="order-1 hidden md:order-2 md:block">
+          <img src="photos/aigroup1.png" alt="" class="md:w-[600px]" />
+        </div>
+      </div>
+    </section>
+    <section>
+      <div
+        class="flex-row justify-between py-4 mx-24 mt-10 mb-10 text-white border-t md:flex"
+      >
+        <ul class="flex-row gap-6 md:flex">
+          <li class="cursor-pointer">Home</li>
+          <li class="cursor-pointer">Updates</li>
+          <li class="cursor-pointer">Services</li>
+          <li class="cursor-pointer">Features</li>
+          <li class="cursor-pointer">About Us</li>
+        </ul>
+        <div class="flex gap-6 py-5 md:py-0 place-self-center">
+          <img src="photos/Instagram.svg" alt="" /><img
+            src="photos/Telegram.svg"
+            alt=""
+          />
+        </div>
+      </div>
+    </section>
+
+    <style>
+      .hide-scroll-bar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .hide-scroll-bar::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+    <script>
+      document.addEventListener("alpine:init", () => {
+        Alpine.store("accordion", {
+          tab: 0,
+        });
+
+        Alpine.data("accordion", (idx) => ({
+          init() {
+            this.idx = idx;
+          },
+          idx: -1,
+          handleClick() {
+            this.$store.accordion.tab =
+              this.$store.accordion.tab === this.idx ? 0 : this.idx;
+          },
+          handleRotate() {
+            return this.$store.accordion.tab === this.idx ? "rotate-180" : "";
+          },
+          handleToggle() {
+            return this.$store.accordion.tab === this.idx
+              ? `max-height: ${this.$refs.tab.scrollHeight}px`
+              : "";
+          },
+        }));
+      });
+    </script>
+  </body>
+</html>
